@@ -39,21 +39,22 @@ void loop() {
   digitalWrite(ledPower,HIGH); // turn the LED off
   delayMicroseconds(sleepTime);
   calcVoltage = voMeasured * (5.0 / 1024.0);
-  dustDensity = 170 * calcVoltage - 0.1;
+  dustDensity = (calcVoltage - 0.6) * 0.2;
   Serial.println(dustDensity); // unit: ug/m3
-  lcd.clear();
-  lcd.print("DoAm:");
-  lcd.setCursor(6,0);
-  lcd.print(h);
-  delay(3000);
-  lcd.clear();
-  lcd.print("NhietDo:");
-  lcd.setCursor(9,0);
-  lcd.print(t);
-  delay(3000);
+  delay(1000);
+   lcd.clear();
+   lcd.print("DoAm:");
+   lcd.setCursor(6,0);
+   lcd.print(h);
+   delay(3000);
+   lcd.clear();
+   lcd.print("NhietDo:");
+   lcd.setCursor(9,0);
+   lcd.print(t);
+   delay(3000);
   lcd.clear();
   lcd.print("BuiPM2.5:");
-  lcd.setCursor(9,0);
-  lcd.print(dustDensity);
+   lcd.setCursor(9,0);
+   lcd.print(dustDensity);
   delay(3000);
 }
